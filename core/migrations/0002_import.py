@@ -17,9 +17,12 @@ def import_data(apps, schema_editor):
         pair.save()
 
         for word_text in pair_data['all']:
-            is_best = word_text == pair_data['best']
-            word = Word(pair=pair, word=word_text, best=is_best)
+            word = Word(pair=pair, word=word_text)
             word.save()
+
+            if word_text == pair_data['best']:
+                pair.best = word
+                pair.save()
 
 
 class Migration(migrations.Migration):
