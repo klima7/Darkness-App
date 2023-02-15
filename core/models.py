@@ -11,17 +11,15 @@ class Word(models.Model):
         return self.word
 
 
-def get_possible_best(abc):
-    print(abc)
-    return None
-
-
 class Pair(models.Model):
-    first = models.CharField(max_length=1)
-    second = models.CharField(max_length=1)
-    best = models.ForeignKey(
-        Word, related_name='abc', on_delete=models.SET_NULL, null=True, blank=True,
-    )
+
+    LETTERS = 'abcdefghijklłmnoprstuwz'
+    FIRST_CHOICES = ((char, char) for char in LETTERS)
+    SECOND_CHOICES = ((char, char) for char in LETTERS)
+
+    first = models.CharField(max_length=1, choices=FIRST_CHOICES, null=False, blank=False)
+    second = models.CharField(max_length=1, choices=SECOND_CHOICES, null=False, blank=False)
+    best = models.ForeignKey(Word, related_name='abc', on_delete=models.SET_NULL, null=True, blank=True)
 
     @property
     def both(self):
@@ -31,7 +29,7 @@ class Pair(models.Model):
         return self.both
 
     def clean(self):
-        if self.best not in self.words.all():
+        if self.best is not None and self.best not in self.words.all():
             raise ValidationError('Best word must be a standard word for given pair')
 
     def save(self, *args, **kwargs):

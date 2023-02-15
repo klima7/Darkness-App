@@ -24,16 +24,33 @@ class WordInlineAdmin(admin.TabularInline):
 
 class PairAdmin(admin.ModelAdmin):
     ordering = ('first', 'second')
-    list_display = ('both', 'first', 'second')
-    search_fields = ('first',)
+    list_display = ('__str__', 'best', 'description', 'other')
+    readonly_fields = ('first', 'second')
+    list_filter = ('first', ('best', admin.EmptyFieldListFilter))
+    search_fields = ('',)
     inlines = (WordInlineAdmin,)
     form = PairAdminForm
+
+    def other(self, pair):
+        return ', '.join([word.word for word in pair.words.all() if word != pair.best])
+
+    def description(self, pair):
+        return pair.best.description if pair.best else None
+
+    def get_search_results(self, request, queryset, search_term):
+        if len(search_term) == 0:
+            return queryset, False
+        elif len(search_term) == 1:
+            return queryset.filter(first=search_term), False
+        elif len(search_term) == 2:
+            return queryset.filter(first=search_term[0], second=search_term[1]), False
+        return Pair.objects.none(), False
 
 
 class WordAdmin(admin.ModelAdmin):
     ordering = ('word',)
     search_fields = ('word',)
-    list_display = ('word', 'description')
+    list_display = ('word', 'pair', 'description')
 
 
 admin.site.register(Pair, PairAdmin)

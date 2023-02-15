@@ -17,7 +17,18 @@ def import_data(apps, schema_editor):
         pair.save()
 
         for word_text in pair_data['all']:
-            word = Word(pair=pair, word=word_text)
+            if 'brak' in word_text:
+                continue
+
+            fixed_text = word_text
+            description = None
+
+            if '(' in word_text and ')' in word_text:
+                index = word_text.index('(')
+                description = word_text[index+1:-1]
+                fixed_text = word_text[:index]
+
+            word = Word(pair=pair, word=fixed_text, description=description)
             word.save()
 
             if word_text == pair_data['best']:
