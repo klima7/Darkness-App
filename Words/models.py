@@ -11,7 +11,7 @@ class Pair(models.Model):
 
 
 class Word(models.Model):
-    pair = models.ForeignKey(Pair, on_delete=models.CASCADE, null=False)
+    pair = models.ForeignKey(Pair, related_name='words', on_delete=models.CASCADE, null=False)
     word = models.CharField(max_length=20, blank=False)
     description = models.TextField(null=True, blank=False)
 
