@@ -5,7 +5,7 @@ from .models import Pair, Word
 class WordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Word
-        fields = ['id', 'word', 'description']
+        exclude = ['pair']
 
 
 class PairSerializer(serializers.ModelSerializer):
@@ -13,5 +13,4 @@ class PairSerializer(serializers.ModelSerializer):
         model = Pair
         fields = '__all__'
 
-    best = WordSerializer()
     words = WordSerializer(many=True)
