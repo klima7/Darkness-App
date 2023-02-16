@@ -45,7 +45,9 @@
         <div class="row">
             {% for pair in pairs %}
                 <div class="col-lg-2 col-md-3 col-sm-6 p-2">
-                    <div onclick="revealPair({{ pair.id }})" id="pair-{{ pair.id }}"
+                    <div onclick="revealPair({{ pair.id }})"
+                         ondblclick="openPair({{ pair.id }})"
+                         id="pair-{{ pair.id }}"
                          class="pair card pt-3 pb-3 w-100 bg-dark text-white text-center">
                         <h5 class="card-title m-0">{{ pair.both.upper }}</h5>
                         <p class="word m-0" style="">{{ pair.best.word }}</p>
