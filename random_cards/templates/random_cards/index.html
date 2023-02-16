@@ -11,14 +11,14 @@
     <div class="pt-2 pb-2 text-center bg-light">
         <h1>Random Cards</h1>
         <div class="p-3">
-            <form>
+            <form onsubmit="generate(); return false;">
                 <div class="form-row">
                     <div class="col">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">From letter</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select id="select-from" class="form-control" id="exampleFormControlSelect1">
                                 {% for letter in letters %}
-                                    <option>{{ letter }}</option>
+                                    <option value="{{ letter.lower }}">{{ letter }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -26,16 +26,16 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">To letter</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select id="select-to" class="form-control" id="exampleFormControlSelect1">
                                 {% for letter in letters %}
-                                    <option>{{ letter }}</option>
+                                    <option value="{{ letter.lower }}">{{ letter }}</option>
                                 {% endfor %}
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
-                    <button onclick="" class="btn btn-dark w-100">Generate</button>
+                    <button class="btn btn-dark w-100">Generate</button>
                 </div>
             </form>
         </div>
