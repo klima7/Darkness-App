@@ -1,0 +1,14 @@
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'lobby:index' %}">Darkness</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
+          <a class="nav-item nav-link" href="{% url 'flashcards:index' %}">Flashcards</a>
+        </div>
+      </div>
+    </nav>
+</header>
