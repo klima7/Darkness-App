@@ -33,11 +33,11 @@
                 <th scope="row">{{ first.upper }}</th>
                 {% for second, pair in first_data.items %}
                     {% if pair.best == None %}
-                        <td onclick="open_pair({{ pair.id }});" data-toggle="tooltip" title="nothing" style="background: lightpink">{{ first.upper }}{{ second.upper }}</td>
+                        <td ondblclick="open_pair({{ pair.id }});" data-toggle="tooltip" title="---" style="background: lightpink">{{ first.upper }}{{ second.upper }}</td>
                     {% elif pair.best.description == None %}
-                        <td onclick="open_pair({{ pair.id }});" data-toggle="tooltip" title="{{ pair.best }}">{{ first.upper }}{{ second.upper }}</td>
+                        <td ondblclick="open_pair({{ pair.id }});" data-toggle="tooltip" title="{{ pair.best }}">{{ first.upper }}{{ second.upper }}</td>
                     {% else %}
-                        <td onclick="open_pair({{ pair.id }});" data-toggle="tooltip" title="{{ pair.best }} ({{ pair.best.description }})">{{ first.upper }}{{ second.upper }}</td>
+                        <td ondblclick="open_pair({{ pair.id }});" data-toggle="tooltip" title="{{ pair.best }} ({{ pair.best.description }})">{{ first.upper }}{{ second.upper }}</td>
                     {% endif %}
                 {% endfor %}
             </tr>
