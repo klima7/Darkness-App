@@ -1,9 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'random_cards/styles.css' %}">
+    <script src="{% static 'random_cards/script.js' %}" defer></script>
+{% endblock %}
 
 {% block content %}
 
     <div class="p-2 text-center bg-light">
         <h1>Random Cards</h1>
+    </div>
+
+    <div class="container-fluid col-sm-12">
+
+        <div class="row">
+            {% for pair in pairs %}
+                <div class="col-lg-2 col-md-3 col-sm-6 p-2">
+                    <div onclick="revealPair({{ pair.id }})" id="pair-{{ pair.id }}" class="pair card pt-3 pb-3 w-100 bg-dark text-white text-center">
+                        <h5 class="card-title m-0">{{ pair.both.upper }}</h5>
+                        <p class="word m-0" style="">{{ pair.best.word }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
 
 {% endblock %}

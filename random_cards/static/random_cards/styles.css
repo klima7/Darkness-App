@@ -1,0 +1,11 @@
+.pair {
+    cursor: pointer;
+}
+
+.pair .word {
+    visibility: hidden;
+}
+
+.pair.revealed .word {
+    visibility: visible;
+}
