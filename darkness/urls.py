@@ -7,4 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('randomcards/', include('random_cards.urls')),
     path('board/', include('board.urls')),
+    path('tables/', include('tables.urls')),
 ]

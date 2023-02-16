@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'lobby',
     'random_cards',
     'board',
+    'tables',
 ]
 
 MIDDLEWARE = [

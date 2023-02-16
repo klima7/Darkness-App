@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from core.models import Pair
 
-# Create your views here.
+
+def index(request):
+    return render(request, 'tables/index.html')

@@ -1,9 +1,7 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from core.models import Pair
 
 
-@login_required
 def index(request):
     pairs_raw = Pair.objects.all()
     pairs_tmp = {(pair.first, pair.second): pair for pair in pairs_raw}
