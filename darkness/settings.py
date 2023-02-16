@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'core',
     'authentication',
     'lobby',
-    'flashcards',
+    'random_cards',
     'board',
 ]
 
