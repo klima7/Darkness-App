@@ -1,9 +1,92 @@
 {% extends 'base.html' %}
 
+{% block head %}
+    <style>
+        table {
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        td, th {
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        td {
+            cursor: pointer;
+        }
+
+        td:hover::before {
+            background-color: lightgray;
+            content: '\00a0';
+            height: 100%;
+            left: -5000px;
+            position: absolute;
+            top: 0;
+            width: 10000px;
+            z-index: -1;
+        }
+
+        td:hover::after {
+            background-color: lightgray;
+            content: '\00a0';
+            height: 10000px;
+            left: 0;
+            position: absolute;
+            top: -5000px;
+            width: 100%;
+            z-index: -1;
+        }
+    </style>
+
+    <script>
+        function open_pair(pair_id) {
+          window.location = `/admin/core/pair/${pair_id}/change/`;
+        }
+    </script>
+{% endblock %}
+
 {% block content %}
 
-    <div class="p-5 text-center bg-light">
-        <h1 class="mb-3">Board</h1>
+    <div class="p-2 text-center bg-light">
+        <h1>Board</h1>
     </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    {% for letter in letters %}
+                        <th scope="col">{{ letter.upper }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for first, first_data in pairs.items %}
+            <tr>
+                <th scope="row">{{ first.upper }}</th>
+                {% for second, pair in first_data.items %}
+                    {% if pair.best == None %}
+                        <td onclick="open_pair({{ pair.id }});" data-toggle="tooltip" title="nothing" style="background: lightpink">{{ first.upper }}{{ second.upper }}</td>
+                    {% elif pair.best.description == None %}
+                        <td onclick="open_pair({{ pair.id }});" data-toggle="tooltip" title="{{ pair.best }}">{{ first.upper }}{{ second.upper }}</td>
+                    {% else %}
+                        <td onclick="open_pair({{ pair.id }});" data-toggle="tooltip" title="{{ pair.best }} ({{ pair.best.description }})">{{ first.upper }}{{ second.upper }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
 
 {% endblock %}
