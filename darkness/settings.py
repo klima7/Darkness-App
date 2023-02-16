@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'authentication',
     'lobby',
     'flashcards',
+    'board',
 ]
 
 MIDDLEWARE = [
