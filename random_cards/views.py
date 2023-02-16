@@ -1,11 +1,9 @@
 import random
 
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from core.models import Pair
 
 
-@login_required
 def index(request):
     from_letter = request.GET.get('from', 'a')
     to_letter = request.GET.get('to', 'z')
