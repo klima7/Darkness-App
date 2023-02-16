@@ -1,0 +1,36 @@
+table {
+    overflow: hidden;
+    z-index: 1;
+}
+
+td, th {
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+}
+
+td {
+    cursor: pointer;
+}
+
+td:hover::before {
+    background-color: lightgray;
+    content: '\00a0';
+    height: 100%;
+    left: -5000px;
+    position: absolute;
+    top: 0;
+    width: 10000px;
+    z-index: -1;
+}
+
+td:hover::after {
+    background-color: lightgray;
+    content: '\00a0';
+    height: 10000px;
+    left: 0;
+    position: absolute;
+    top: -5000px;
+    width: 100%;
+    z-index: -1;
+}
