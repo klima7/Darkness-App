@@ -52,7 +52,7 @@ class Letter(models.Model):
 
 class Word(models.Model):
     pair = models.ForeignKey('Pair', related_name='words', on_delete=models.CASCADE, null=False)
-    word = models.CharField(max_length=20, blank=False)
+    word = models.CharField(max_length=20, blank=False, unique=True)
     description = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
