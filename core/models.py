@@ -38,9 +38,6 @@ class Letter(models.Model):
     char = models.CharField(max_length=1, null=False, blank=False)
     face = models.ForeignKey(Face, related_name='letters', on_delete=models.CASCADE, null=False, blank=False)
 
-    class Meta:
-        ordering = ['char']
-
     def __str__(self):
         return self.char
 
