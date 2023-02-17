@@ -48,8 +48,10 @@
                     <div onclick="revealPair({{ pair.id }})"
                          ondblclick="openPair({{ pair.id }}, true)"
                          id="pair-{{ pair.id }}"
-                         class="pair card pt-3 pb-3 w-100 bg-dark text-white text-center">
-                        <h5 class="card-title m-0">{{ pair.both.upper }}</h5>
+                         class="pair card pt-3 pb-3 w-100 bg-dark text-black text-center">
+                        <h5 class="card-title m-0" style="font-family: monospace">
+                            <span style="border-radius: 10px 0 0 10px; background-color: {{ pair.first.face.color.rgb }}">&nbsp;{{ pair.first.char.upper }}</span><span style="border-radius: 0 10px 10px 0; background-color: {{ pair.second.face.color.rgb }}">{{ pair.second.char.upper }}&nbsp;</span>
+                        </h5>
                         <p class="word m-0" style="">{{ pair.best.word }}</p>
                     </div>
                 </div>

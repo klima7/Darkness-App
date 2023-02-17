@@ -28,7 +28,7 @@
                     {% for pair in row %}
                         <td style="cursor: pointer" ondblclick="openPair({{ pair.id }}, false)" data-toggle="tooltip" title="{{ pair.tables_tooltip }}">
                             <span style="font-family: monospace; font-size: 16pt;">
-                                <span style="background-color: {{ pair.first.face.color.rgb }}">&nbsp;{{ pair.first|upper }}</span><span style="background-color: {{ pair.second.face.color.rgb }}">{{ pair.second|upper }}&nbsp;</span>
+                                <span style="border-radius: 10px 0 0 10px; background-color: {{ pair.first.face.color.rgb }}">&nbsp;{{ pair.first|upper }}</span><span style="border-radius: 0 10px 10px 0; background-color: {{ pair.second.face.color.rgb }}">{{ pair.second|upper }}&nbsp;</span>
                             </span>
                             {{ pair.best.word }}</td>
                     {% endfor %}
