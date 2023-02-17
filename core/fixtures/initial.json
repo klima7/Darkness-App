@@ -6,7 +6,7 @@
       "name": "yellow",
       "red": 255,
       "green": 255,
-      "blue": 0
+      "blue": 153
     }
   },
   {
@@ -43,9 +43,9 @@
     "pk": 1,
     "fields": {
       "name": "blue",
-      "red": 0,
-      "green": 0,
-      "blue": 255
+      "red": 135,
+      "green": 206,
+      "blue": 250
     }
   },
   {
@@ -89,9 +89,9 @@
     "pk": 2,
     "fields": {
       "name": "white",
-      "red": 255,
-      "green": 255,
-      "blue": 255
+      "red": 200,
+      "green": 200,
+      "blue": 200
     }
   },
   {
@@ -135,9 +135,9 @@
     "pk": 3,
     "fields": {
       "name": "red",
-      "red": 255,
-      "green": 0,
-      "blue": 0
+      "red": 140,
+      "green": 128,
+      "blue": 128
     }
   },
   {
@@ -182,8 +182,8 @@
     "fields": {
       "name": "orange",
       "red": 255,
-      "green": 165,
-      "blue": 0
+      "green": 204,
+      "blue": 153
     }
   },
   {
@@ -226,10 +226,10 @@
     "model": "core.Color",
     "pk": 5,
     "fields": {
-      "name": "yellow",
-      "red": 0,
-      "green": 255,
-      "blue": 0
+      "name": "green",
+      "red": 152,
+      "green": 251,
+      "blue": 152
     }
   },
   {

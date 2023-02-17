@@ -8,13 +8,13 @@
     </div>
 
     {% for face in faces %}
-        <div class="text-center">
-            <h2>{{ face.get_position_display }}</h2>
+        <div class="text-center mb-0 mt-0 p-2" style="background-color: {{ face.color.rgb }}">
+            <h2>{{ face.get_position_display }} ({{ face.color.name }})</h2>
         </div>
 
-        <table class="table table-hover">
+        <table class="table table-hover mb-0 mt-0">
             <thead>
-            <tr>
+            <tr style="background-color: {{ face.color.rgb }}">
                 <th scope="col">#</th>
                 {% for letter in face.letters.all %}
                     <th scope="col">{{ letter|upper }}</th>
@@ -24,9 +24,13 @@
             <tbody>
             {% for row in face.zipped %}
                 <tr>
-                    <th>{{ row.0.second|upper }}</th>
+                    <th style="background-color: {{ row.0.second.face.color.rgb }}">{{ row.0.second|upper }}</th>
                     {% for pair in row %}
-                        <td>{{ pair.both|upper }} - {{ pair.best.word }}</td>
+                        <td>
+                            <span style="font-family: monospace; font-size: 16pt;">
+                                <span style="background-color: {{ pair.first.face.color.rgb }}">&nbsp;{{ pair.first|upper }}</span><span style="background-color: {{ pair.second.face.color.rgb }}">{{ pair.second|upper }}&nbsp;</span>
+                            </span>
+                            {{ pair.best.word }}</td>
                     {% endfor %}
                 </tr>
             {% endfor %}

@@ -9,6 +9,10 @@ class Color(models.Model):
     green = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(255)], null=False, blank=False)
     blue = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(255)], null=False, blank=False)
 
+    @property
+    def rgb(self):
+        return f'rgb({self.red}, {self.green}, {self.blue})'
+
     def __str__(self):
         return self.name
 
