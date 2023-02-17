@@ -77,6 +77,8 @@ class Pair(models.Model):
         if other_words:
             joined_words = ', '.join(other_words)
             result += f' ({joined_words})'
+        if not result:
+            result = '---'
         return result
 
     def __str__(self):
