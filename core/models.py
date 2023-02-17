@@ -1,5 +1,41 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from rest_framework.exceptions import ValidationError
+
+
+class Color(models.Model):
+    name = models.CharField(max_length=10, null=False, blank=False)
+    red = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(255)], null=False, blank=False)
+    green = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(255)], null=False, blank=False)
+    blue = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(255)], null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+
+
+class Face(models.Model):
+
+    class Position(models.TextChoices):
+        F = 'F', 'Front'
+        B = 'B', 'Back'
+        L = 'L', 'Left'
+        R = 'R', 'Right'
+        U = 'U', 'Up'
+        D = 'D', 'Down'
+
+    position = models.CharField(max_length=1, choices=Position.choices, null=False, blank=False)
+    color = models.ForeignKey(Color, related_name='faces', on_delete=models.CASCADE, null=False, blank=False)
+
+    def __str__(self):
+        return self.get_position_display()
+
+
+class Letter(models.Model):
+    char = models.CharField(max_length=1, null=False, blank=False)
+    face = models.ForeignKey(Face, related_name='letters', on_delete=models.CASCADE, null=False, blank=False)
+
+    def __str__(self):
+        return self.char
 
 
 class Word(models.Model):
@@ -12,13 +48,12 @@ class Word(models.Model):
 
 
 class Pair(models.Model):
-
     LETTERS = 'abcdefghijklłmnoprstuwz'
     FIRST_CHOICES = ((char, char) for char in LETTERS)
     SECOND_CHOICES = ((char, char) for char in LETTERS)
 
-    first = models.CharField(max_length=1, choices=FIRST_CHOICES, null=False, blank=False)
-    second = models.CharField(max_length=1, choices=SECOND_CHOICES, null=False, blank=False)
+    first = models.ForeignKey(Letter, related_name='pairs_first', on_delete=models.CASCADE, null=False, blank=False)
+    second = models.ForeignKey(Letter, related_name='pairs_second', on_delete=models.CASCADE, null=False, blank=False)
     best = models.ForeignKey(Word, related_name='abc', on_delete=models.SET_NULL, null=True, blank=True)
 
     @property

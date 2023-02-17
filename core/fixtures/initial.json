@@ -1,0 +1,271 @@
+[
+  {
+    "model": "core.Color",
+    "pk": 0,
+    "fields": {
+      "name": "yellow",
+      "red": 255,
+      "green": 255,
+      "blue": 0
+    }
+  },
+  {
+    "model": "core.Face",
+    "pk": 0,
+    "fields": {
+      "position": "U",
+      "color": 0
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "a",
+      "face": 0
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "b",
+      "face": 0
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "c",
+      "face": 0
+    }
+  },
+  {
+    "model": "core.Color",
+    "pk": 1,
+    "fields": {
+      "name": "blue",
+      "red": 0,
+      "green": 0,
+      "blue": 255
+    }
+  },
+  {
+    "model": "core.Face",
+    "pk": 1,
+    "fields": {
+      "position": "F",
+      "color": 1
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "d",
+      "face": 1
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "e",
+      "face": 1
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "f",
+      "face": 1
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "g",
+      "face": 1
+    }
+  },
+  {
+    "model": "core.Color",
+    "pk": 2,
+    "fields": {
+      "name": "white",
+      "red": 255,
+      "green": 255,
+      "blue": 255
+    }
+  },
+  {
+    "model": "core.Face",
+    "pk": 2,
+    "fields": {
+      "position": "D",
+      "color": 2
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "h",
+      "face": 2
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "i",
+      "face": 2
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "j",
+      "face": 2
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "k",
+      "face": 2
+    }
+  },
+  {
+    "model": "core.Color",
+    "pk": 3,
+    "fields": {
+      "name": "red",
+      "red": 255,
+      "green": 0,
+      "blue": 0
+    }
+  },
+  {
+    "model": "core.Face",
+    "pk": 3,
+    "fields": {
+      "position": "R",
+      "color": 3
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "l",
+      "face": 3
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "ł",
+      "face": 3
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "m",
+      "face": 3
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "n",
+      "face": 3
+    }
+  },
+  {
+    "model": "core.Color",
+    "pk": 4,
+    "fields": {
+      "name": "orange",
+      "red": 255,
+      "green": 165,
+      "blue": 0
+    }
+  },
+  {
+    "model": "core.Face",
+    "pk": 4,
+    "fields": {
+      "position": "L",
+      "color": 4
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "o",
+      "face": 4
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "p",
+      "face": 4
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "r",
+      "face": 4
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "s",
+      "face": 4
+    }
+  },
+  {
+    "model": "core.Color",
+    "pk": 5,
+    "fields": {
+      "name": "yellow",
+      "red": 0,
+      "green": 255,
+      "blue": 0
+    }
+  },
+  {
+    "model": "core.Face",
+    "pk": 5,
+    "fields": {
+      "position": "B",
+      "color": 5
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "t",
+      "face": 5
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "u",
+      "face": 5
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "w",
+      "face": 5
+    }
+  },
+  {
+    "model": "core.Letter",
+    "fields": {
+      "char": "z",
+      "face": 5
+    }
+  }
+]

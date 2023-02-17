@@ -8,12 +8,16 @@ from django.db import migrations
 def import_data(apps, schema_editor):
     Pair = apps.get_model('core', 'Pair')
     Word = apps.get_model('core', 'Word')
+    Letter = apps.get_model('core', 'Letter')
 
     with open('data.json') as f:
         data = json.load(f)
 
     for pair_letters, pair_data in data.items():
-        pair = Pair(first=pair_letters[0], second=pair_letters[1])
+        pair = Pair(
+            first=Letter.objects.filter(char=pair_letters[0]).get(),
+            second=Letter.objects.filter(char=pair_letters[1]).get()
+        )
         pair.save()
 
         for word_text in pair_data['all']:

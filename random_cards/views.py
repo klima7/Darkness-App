@@ -12,7 +12,7 @@ def index(request):
     to_index = Pair.LETTERS.index(to_letter)
     letters = list(Pair.LETTERS[from_index:to_index+1])
 
-    matching_pairs = list(Pair.objects.filter(first__in=letters).exclude(best__isnull=True).all())
+    matching_pairs = list(Pair.objects.filter(first__char__in=letters).exclude(best__isnull=True).all())
 
     count = min(36, len(matching_pairs))
     random_pairs = random.sample(matching_pairs, k=count)
