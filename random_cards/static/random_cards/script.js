@@ -4,10 +4,6 @@ function revealPair(pair_id) {
     card.addClass('bg-light text-black revealed');
 }
 
-function openPair(pair_id) {
-    window.open(`/admin/core/pair/${pair_id}/change/`, '_blank');
-}
-
 function setSelects() {
     console.log("Setting selects");
     const urlParams = new URL(window.location.toLocaleString()).searchParams;

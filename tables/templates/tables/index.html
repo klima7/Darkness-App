@@ -26,7 +26,7 @@
                 <tr>
                     <th style="background-color: {{ row.0.second.face.color.rgb }}">{{ row.0.second|upper }}</th>
                     {% for pair in row %}
-                        <td>
+                        <td style="cursor: pointer" ondblclick="openPair({{ pair.id }}, false)" data-toggle="tooltip" title="{{ pair.tables_tooltip }}">
                             <span style="font-family: monospace; font-size: 16pt;">
                                 <span style="background-color: {{ pair.first.face.color.rgb }}">&nbsp;{{ pair.first|upper }}</span><span style="background-color: {{ pair.second.face.color.rgb }}">{{ pair.second|upper }}&nbsp;</span>
                             </span>
@@ -37,5 +37,11 @@
             </tbody>
         </table>
     {% endfor %}
+
+    <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
 
 {% endblock %}

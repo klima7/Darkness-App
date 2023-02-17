@@ -64,6 +64,17 @@ class Pair(models.Model):
     def both(self):
         return f'{self.first}{self.second}'
 
+    @property
+    def tables_tooltip(self):
+        result = ''
+        if self.best and self.best.description:
+            result += self.best.description
+        other_words = [word.word for word in self.words.all() if word != self.best]
+        if other_words:
+            joined_words = ', '.join(other_words)
+            result += f' ({joined_words})'
+        return result
+
     def __str__(self):
         return self.both
 
