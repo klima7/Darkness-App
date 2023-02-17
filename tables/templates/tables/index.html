@@ -28,12 +28,21 @@
                 <tr>
                     <th style="background-color: {{ row.0.second.face.color.rgb }}">{{ row.0.second|upper }}</th>
                     {% for pair in row %}
-                        <td style="cursor: pointer" ondblclick="openPair({{ pair.id }}, false)" data-toggle="tooltip" title="{{ pair.tables_tooltip }}">
+                        <!-- Large -->
+                        <td class="d-none d-lg-table-cell" style="cursor: pointer" ondblclick="openPair({{ pair.id }}, false)" data-toggle="tooltip" title="{{ pair.tables_tooltip }}">
                             <span style="font-family: monospace; font-size: 16pt;">
                                 <span style="border-radius: 10px 0 0 10px; background-color: {{ pair.first.face.color.rgb }}">&nbsp;{{ pair.first|upper }}</span><span style="border-radius: 0 10px 10px 0; background-color: {{ pair.second.face.color.rgb }}">{{ pair.second|upper }}&nbsp;</span>
                             </span>
-                            <br class="d-block d-lg-none" />
-                            {{ pair.best.word }}</td>
+                            {{ pair.best.word }}
+                        </td>
+                        <!-- small -->
+                        <td class="d-table-cell d-lg-none text-center" style="cursor: pointer" ondblclick="openPair({{ pair.id }}, false)" data-toggle="tooltip" title="{{ pair.tables_tooltip }}">
+                            <span style="font-family: monospace; font-size: 16pt;">
+                                <span style="border-radius: 10px 0 0 10px; background-color: {{ pair.first.face.color.rgb }}">&nbsp;{{ pair.first|upper }}</span><span style="border-radius: 0 10px 10px 0; background-color: {{ pair.second.face.color.rgb }}">{{ pair.second|upper }}&nbsp;</span>
+                            </span>
+                            <br />
+                            {{ pair.best.word }}
+                        </td>
                     {% endfor %}
                 </tr>
             {% endfor %}
