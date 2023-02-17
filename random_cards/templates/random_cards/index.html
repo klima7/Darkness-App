@@ -46,7 +46,7 @@
     <div class="container-fluid col-sm-12">
         <div class="row">
             {% for pair in pairs %}
-                <div class="col-lg-2 col-md-3 col-sm-6 p-2">
+                <div class="col-lg-2 col-md-3 col-6 p-2">
                     <div onclick="revealPair({{ pair.id }})"
                          ondblclick="openPair({{ pair.id }}, true)"
                          id="pair-{{ pair.id }}"
