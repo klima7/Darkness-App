@@ -18,7 +18,7 @@
                             <label for="exampleFormControlSelect1">From letter</label>
                             <select id="select-from" class="form-control" id="exampleFormControlSelect1">
                                 {% for letter in letters %}
-                                    <option value="{{ letter.lower }}">{{ letter }}</option>
+                                    <option value="{{ letter.char.lower }}">{{ letter }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -28,7 +28,7 @@
                             <label for="exampleFormControlSelect1">To letter</label>
                             <select id="select-to" class="form-control" id="exampleFormControlSelect1">
                                 {% for letter in letters %}
-                                    <option value="{{ letter.lower }}">{{ letter }}</option>
+                                    <option value="{{ letter.char.lower }}">{{ letter }}</option>
                                 {% endfor %}
                             </select>
                         </div>

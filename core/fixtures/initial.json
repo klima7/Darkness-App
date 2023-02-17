@@ -14,28 +14,32 @@
     "pk": 0,
     "fields": {
       "position": "U",
-      "color": 0
+      "color": 0,
+      "order": 0
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "a",
-      "face": 0
+      "face": 0,
+      "order": 0
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "b",
-      "face": 0
+      "face": 0,
+      "order": 1
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "c",
-      "face": 0
+      "face": 0,
+      "order": 2
     }
   },
   {
@@ -53,35 +57,40 @@
     "pk": 1,
     "fields": {
       "position": "F",
-      "color": 1
+      "color": 1,
+      "order": 1
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "d",
-      "face": 1
+      "face": 1,
+      "order": 3
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "e",
-      "face": 1
+      "face": 1,
+      "order": 4
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "f",
-      "face": 1
+      "face": 1,
+      "order": 5
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "g",
-      "face": 1
+      "face": 1,
+      "order": 6
     }
   },
   {
@@ -99,35 +108,40 @@
     "pk": 2,
     "fields": {
       "position": "D",
-      "color": 2
+      "color": 2,
+      "order": 2
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "h",
-      "face": 2
+      "face": 2,
+      "order": 7
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "i",
-      "face": 2
+      "face": 2,
+      "order": 8
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "j",
-      "face": 2
+      "face": 2,
+      "order": 9
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "k",
-      "face": 2
+      "face": 2,
+      "order": 10
     }
   },
   {
@@ -135,7 +149,7 @@
     "pk": 3,
     "fields": {
       "name": "red",
-      "red": 140,
+      "red": 240,
       "green": 128,
       "blue": 128
     }
@@ -145,35 +159,40 @@
     "pk": 3,
     "fields": {
       "position": "R",
-      "color": 3
+      "color": 3,
+      "order": 3
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "l",
-      "face": 3
+      "face": 3,
+      "order": 11
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "ł",
-      "face": 3
+      "face": 3,
+      "order": 12
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "m",
-      "face": 3
+      "face": 3,
+      "order": 13
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "n",
-      "face": 3
+      "face": 3,
+      "order": 14
     }
   },
   {
@@ -191,35 +210,40 @@
     "pk": 4,
     "fields": {
       "position": "L",
-      "color": 4
+      "color": 4,
+      "order": 4
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "o",
-      "face": 4
+      "face": 4,
+      "order": 15
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "p",
-      "face": 4
+      "face": 4,
+      "order": 16
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "r",
-      "face": 4
+      "face": 4,
+      "order": 17
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "s",
-      "face": 4
+      "face": 4,
+      "order": 18
     }
   },
   {
@@ -237,35 +261,40 @@
     "pk": 5,
     "fields": {
       "position": "B",
-      "color": 5
+      "color": 5,
+      "order": 5
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "t",
-      "face": 5
+      "face": 5,
+      "order": 19
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "u",
-      "face": 5
+      "face": 5,
+      "order": 20
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "w",
-      "face": 5
+      "face": 5,
+      "order": 21
     }
   },
   {
     "model": "core.Letter",
     "fields": {
       "char": "z",
-      "face": 5
+      "face": 5,
+      "order": 22
     }
   }
 ]
