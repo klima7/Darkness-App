@@ -17,7 +17,7 @@
                 <tr>
                     <th scope="col"></th>
                     {% for letter in letters %}
-                        <th scope="col">{{ letter.upper }}</th>
+                        <th style="background-color: {{ letter.face.color.rgb }}" scope="col">{{ letter.char.upper }}</th>
                     {% endfor %}
                 </tr>
             </thead>
@@ -25,14 +25,14 @@
             <tbody>
             {% for first, first_data in pairs.items %}
             <tr>
-                <th scope="row">{{ first.upper }}</th>
+                <th scope="row" style="background-color: {{ first.face.color.rgb }}">{{ first.char.upper }}</th>
                 {% for second, pair in first_data.items %}
                     {% if pair.best == None %}
-                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="---" style="background: lightpink">{{ first.upper }}{{ second.upper }}</td>
+                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="---" style="background: lightpink">{{ first.char.upper }}{{ second.char.upper }}</td>
                     {% elif pair.best.description == None %}
-                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="{{ pair.best }}">{{ first.upper }}{{ second.upper }}</td>
+                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="{{ pair.best }}">{{ first.char.upper }}{{ second.char.upper }}</td>
                     {% else %}
-                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="{{ pair.best }} ({{ pair.best.description }})">{{ first.upper }}{{ second.upper }}</td>
+                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="{{ pair.best }} ({{ pair.best.description }})">{{ first.char.upper }}{{ second.char.upper }}</td>
                     {% endif %}
                 {% endfor %}
             </tr>
