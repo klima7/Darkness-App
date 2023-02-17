@@ -3,8 +3,35 @@
 
 {% block content %}
 
-    <div class="p-2 text-center bg-light">
+    <div class="p-2 text-center bg-light mb-5">
         <h1>Tables</h1>
     </div>
+
+    {% for face in faces %}
+        <div class="text-center">
+            <h2>{{ face.get_position_display }}</h2>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                {% for letter in face.letters.all %}
+                    <th scope="col">{{ letter|upper }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in face.zipped %}
+                <tr>
+                    <th>{{ row.0.second|upper }}</th>
+                    {% for pair in row %}
+                        <td>{{ pair.both|upper }} - {{ pair.best.word }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
 
 {% endblock %}
