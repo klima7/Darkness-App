@@ -7,4 +7,5 @@ urlpatterns = [
     path('words/', include('words.urls')),
     path('board/', include('board.urls')),
     path('tables/', include('tables.urls')),
+    path('letters/', include('letters.urls')),
 ]

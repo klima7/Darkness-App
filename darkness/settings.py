@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'words',
     'board',
     'tables',
+    'letters',
 ]
 
 MIDDLEWARE = [

@@ -4,14 +4,14 @@
 {% block title %}Random Cards{% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'words/styles.css' %}">
-    <script src="{% static 'words/script.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'letters/styles.css' %}">
+    <script src="{% static 'letters/script.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
 
     <div class="pt-2 pb-2 text-center bg-light">
-        <h1>Words</h1>
+        <h1>Letters</h1>
         <div class="p-3">
             <form onsubmit="generate(); return false;">
                 <div class="form-row">
@@ -53,24 +53,6 @@
                     <button class="btn btn-dark w-100">Generate</button>
                 </div>
             </form>
-        </div>
-    </div>
-
-    <div class="container-fluid col-sm-12">
-        <div class="row">
-            {% for pair in pairs %}
-                <div class="col-lg-2 col-md-3 col-6 p-2">
-                    <div onclick="revealPair({{ pair.id }})"
-                         ondblclick="openPair({{ pair.id }}, true)"
-                         id="pair-{{ pair.id }}"
-                         class="pair card pt-3 pb-3 w-100 bg-dark text-black text-center">
-                        <h5 class="card-title m-0" style="font-family: monospace">
-                            <span style="border-radius: 10px 0 0 10px; background-color: {{ pair.first.face.color.rgb }}">&nbsp;{{ pair.first.char.upper }}</span><span style="border-radius: 0 10px 10px 0; background-color: {{ pair.second.face.color.rgb }}">{{ pair.second.char.upper }}&nbsp;</span>
-                        </h5>
-                        <p class="word m-0" style="">{{ pair.best.word }}</p>
-                    </div>
-                </div>
-            {% endfor %}
         </div>
     </div>
 
