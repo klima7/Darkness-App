@@ -23,4 +23,4 @@ def index(request):
         'letters': Letter.objects.all(),
         'counts': [36, 72, 108, 144, 1000]
     }
-    return render(request, 'random_cards/index.html', context)
+    return render(request, 'words/index.html', context)

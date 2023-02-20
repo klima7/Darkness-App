@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'core',
     'lobby',
-    'random_cards',
+    'words',
     'board',
     'tables',
 ]
