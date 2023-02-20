@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 
-from .models import Pair, Word, Letter, Face, Color
+from .models import Pair, Word, Letter, Face, Color, Element
 
 
 class PairAdminForm(forms.ModelForm):
@@ -67,8 +67,13 @@ class ColorAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'red', 'green', 'blue')
 
 
+class ElementAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'type')
+
+
 admin.site.register(Pair, PairAdmin)
 admin.site.register(Word, WordAdmin)
 admin.site.register(Letter, LetterAdmin)
 admin.site.register(Face, FaceAdmin)
 admin.site.register(Color, ColorAdmin)
+admin.site.register(Element, ElementAdmin)

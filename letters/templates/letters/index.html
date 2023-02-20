@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Random Cards{% endblock %}
+{% block title %}Letters{% endblock %}
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'letters/styles.css' %}">
@@ -17,21 +17,10 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-group">
-                            <label>From</label>
-                            <select id="select-from" class="form-control">
-                                {% for letter in letters %}
-                                    <option value="{{ letter.char.lower }}">{{ letter|upper }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label>To letter</label>
-                            <select id="select-to" class="form-control">
-                                {% for letter in letters %}
-                                    <option value="{{ letter.char.lower }}">{{ letter }}</option>
-                                {% endfor %}
+                            <label>Type</label>
+                            <select id="select-type" class="form-control">
+                                <option value="edge">Edges</option>
+                                <option value="corner">Corners</option>
                             </select>
                         </div>
                     </div>
@@ -44,7 +33,6 @@
                                 <option value="72">72</option>
                                 <option value="108">108</option>
                                 <option value="144">144</option>
-                                <option value="1000">All</option>
                             </select>
                         </div>
                     </div>
