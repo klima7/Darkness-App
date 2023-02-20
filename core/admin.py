@@ -41,9 +41,9 @@ class PairAdmin(admin.ModelAdmin):
         if len(search_term) == 0:
             return queryset, False
         elif len(search_term) == 1:
-            return queryset.filter(first=search_term), False
+            return queryset.filter(first__char=search_term), False
         elif len(search_term) == 2:
-            return queryset.filter(first=search_term[0], second=search_term[1]), False
+            return queryset.filter(first__char=search_term[0], second__char=search_term[1]), False
         return Pair.objects.none(), False
 
 
