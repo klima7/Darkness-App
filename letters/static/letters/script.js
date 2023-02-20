@@ -1,5 +1,5 @@
-function revealPair(pair_id) {
-    let card = $(`#pair-${pair_id}`);
+function reveal(id) {
+    let card = $(`#card-${id}`);
     card.removeClass('bg-dark text-white');
     card.addClass('bg-light text-black revealed');
 }

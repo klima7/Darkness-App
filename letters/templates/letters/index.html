@@ -44,4 +44,24 @@
         </div>
     </div>
 
+    <div class="container-fluid col-sm-12">
+        <div class="row">
+            {% for element in elements %}
+                <div class="col-lg-2 col-md-3 col-6 p-2">
+                    <div onclick="reveal({{ forloop.counter }})"
+                         id="card-{{ forloop.counter }}"
+                         class="pair card pt-3 pb-3 w-100 bg-dark text-black text-center">
+                        <h5 class="card-title m-0" style="font-family: monospace">
+                            <span class="square" style="background-color: {{ element.color.rgb }}"></span>
+                            {% for color in element.other_colors %}
+                                <span class="square" style="background-color: {{ color.rgb }}"></span>
+                            {% endfor %}
+                        </h5>
+                        <p class="word m-0">{{ element.letter|upper }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}

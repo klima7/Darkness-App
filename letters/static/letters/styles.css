@@ -9,3 +9,10 @@
 .pair.revealed .word {
     visibility: visible;
 }
+
+.square {
+    display: inline-block;
+    color: rgba(0, 0, 0, 0);
+    width: 1em;
+    height: 1em;
+}
