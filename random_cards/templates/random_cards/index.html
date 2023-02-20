@@ -17,8 +17,18 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">From letter</label>
-                            <select id="select-from" class="form-control" id="exampleFormControlSelect1">
+                            <label>From</label>
+                            <select id="select-from" class="form-control">
+                                {% for letter in letters %}
+                                    <option value="{{ letter.char.lower }}">{{ letter|upper }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>To letter</label>
+                            <select id="select-to" class="form-control">
                                 {% for letter in letters %}
                                     <option value="{{ letter.char.lower }}">{{ letter }}</option>
                                 {% endfor %}
@@ -27,11 +37,14 @@
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">To letter</label>
-                            <select id="select-to" class="form-control" id="exampleFormControlSelect1">
-                                {% for letter in letters %}
-                                    <option value="{{ letter.char.lower }}">{{ letter }}</option>
-                                {% endfor %}
+                            <label>Count</label>
+                            <select id="select-count" class="form-control">
+                                <option value="18">18</option>
+                                <option value="36">36</option>
+                                <option value="72">72</option>
+                                <option value="108">108</option>
+                                <option value="144">144</option>
+                                <option value="1000">All</option>
                             </select>
                         </div>
                     </div>
