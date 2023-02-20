@@ -91,16 +91,3 @@ class Pair(models.Model):
     def save(self, *args, **kwargs):
         self.full_clean()
         return super().save(*args, **kwargs)
-
-
-class Element(models.Model):
-
-    class ElementType(models.IntegerChoices):
-        EDGE = 1, 'Edge'
-        CORNER = 2, 'Corner'
-
-    faces = models.ManyToManyField(Face)
-    type = models.IntegerField(choices=ElementType.choices, null=False, blank=False)
-
-    def __str__(self):
-        return ''.join([face.position for face in self.faces.all()])
