@@ -30,7 +30,7 @@
                             <label>To letter</label>
                             <select id="select-to" class="form-control">
                                 {% for letter in letters %}
-                                    <option value="{{ letter.char.lower }}">{{ letter }}</option>
+                                    <option value="{{ letter.char.lower }}">{{ letter|upper }}</option>
                                 {% endfor %}
                             </select>
                         </div>

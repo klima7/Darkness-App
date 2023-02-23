@@ -30,11 +30,11 @@
                 <th scope="row" style="background-color: {{ first.face.color.rgb }}">{{ first.char.upper }}</th>
                 {% for second, pair in first_data.items %}
                     {% if pair.best == None %}
-                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="---" style="background: lightpink">{{ first.char.upper }}{{ second.char.upper }}</td>
+                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="---" style="background: lightpink">{{ pair.both.upper }}</td>
                     {% elif pair.best.description == None %}
-                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="{{ pair.best }}">{{ first.char.upper }}{{ second.char.upper }}</td>
+                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="{{ pair.best }}">{{ pair.both.upper }}</td>
                     {% else %}
-                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="{{ pair.best }} ({{ pair.best.description }})">{{ first.char.upper }}{{ second.char.upper }}</td>
+                        <td ondblclick="openPair({{ pair.id }}, false);" data-toggle="tooltip" title="{{ pair.best }} ({{ pair.best.description }})">{{ pair.both.upper }}</td>
                     {% endif %}
                 {% endfor %}
             </tr>

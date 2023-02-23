@@ -6,5 +6,5 @@ def index(request):
     letters = list(Letter.objects.all())
     pairs_raw = Pair.objects.all()
     pairs_tmp = {(pair.first, pair.second): pair for pair in pairs_raw}
-    pairs = {first: {second: pairs_tmp[(first, second)] for second in letters} for first in letters}
+    pairs = {row: {column: pairs_tmp[(column, row)] for column in letters} for row in letters}
     return render(request, 'board/index.html', context={'pairs': pairs, 'letters': letters})

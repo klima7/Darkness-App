@@ -26,7 +26,7 @@ class PairAdmin(admin.ModelAdmin):
     ordering = ('first', 'second')
     list_display = ('__str__', 'best', 'description', 'other')
     readonly_fields = ('first', 'second')
-    list_filter = ('first', ('best', admin.EmptyFieldListFilter))
+    list_filter = ('first', 'second', ('best', admin.EmptyFieldListFilter))
     search_fields = ('',)
     inlines = (WordInlineAdmin,)
     form = PairAdminForm
