@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'board',
     'tables',
     'letters',
+    'stories',
 ]
 
 MIDDLEWARE = [

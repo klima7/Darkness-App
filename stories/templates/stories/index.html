@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Stories{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'stories/styles.css' %}">
+    <script src="{% static 'stories/script.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="pt-2 pb-2 text-center bg-light">
+        <h1>Words</h1>
+        <div class="p-3">
+            <form onsubmit="generate(); return false;">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>From</label>
+                            <select id="select-from" class="form-control">
+                                {% for letter in letters %}
+                                    <option value="{{ letter.char.lower }}">{{ letter|upper }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>To letter</label>
+                            <select id="select-to" class="form-control">
+                                {% for letter in letters %}
+                                    <option value="{{ letter.char.lower }}">{{ letter|upper }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Count</label>
+                            <select id="select-count" class="form-control">
+                                <option value="18">18</option>
+                                <option value="36">36</option>
+                                <option value="72">72</option>
+                                <option value="108">108</option>
+                                <option value="144">144</option>
+                                <option value="1000">All</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button class="btn btn-dark w-100">Generate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container-fluid col-sm-12">
+        <div class="row">
+
+        </div>
+    </div>
+
+{% endblock %}
