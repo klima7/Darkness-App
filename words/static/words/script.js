@@ -5,7 +5,6 @@ function revealPair(pair_id) {
 }
 
 function setSelects() {
-    console.log("Setting selects");
     const urlParams = new URL(window.location.toLocaleString()).searchParams;
 
     let fromLetter = urlParams.get('from') ?? 'a';

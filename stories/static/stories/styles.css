@@ -1,0 +1,14 @@
+.story {
+    border-radius: 10px;
+    border: solid 2px darkorange;
+    padding: 10px;
+    margin-bottom: 1em;
+}
+
+.pair {
+    display: inline-block;
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 3px 8px;
+    margin-bottom: 0.5ex;
+}

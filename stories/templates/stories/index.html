@@ -11,13 +11,13 @@
 {% block content %}
 
     <div class="pt-2 pb-2 text-center bg-light">
-        <h1>Words</h1>
+        <h1>Stories</h1>
         <div class="p-3">
             <form onsubmit="generate(); return false;">
                 <div class="form-row">
                     <div class="col">
                         <div class="form-group">
-                            <label>From</label>
+                            <label>From letter</label>
                             <select id="select-from" class="form-control">
                                 {% for letter in letters %}
                                     <option value="{{ letter.char.lower }}">{{ letter|upper }}</option>
@@ -37,14 +37,20 @@
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label>Count</label>
-                            <select id="select-count" class="form-control">
-                                <option value="18">18</option>
-                                <option value="36">36</option>
-                                <option value="72">72</option>
-                                <option value="108">108</option>
-                                <option value="144">144</option>
-                                <option value="1000">All</option>
+                            <label>Length</label>
+                            <select id="select-length" class="form-control">
+                                {% for length in lengths %}
+                                    <option value="{{ length }}">{{ length }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Reveal</label>
+                            <select id="select-reveal" class="form-control">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
                             </select>
                         </div>
                     </div>
@@ -56,10 +62,29 @@
         </div>
     </div>
 
-    <div class="container-fluid col-sm-12">
-        <div class="row">
-
-        </div>
+    <div class="container-fluid col-sm-12" style="font-family: monospace">
+        {% for story in stories %}
+            <div class="story">
+                <div class="text-center">
+                    <h5>Story {{ forloop.counter }}</h5>
+                </div>
+                <div class="text-center">
+                    {% for pair in story %}
+                        {% if reveal %}
+                            <span class="pair" data-toggle="tooltip" title="{{ pair.both|upper }}">{{ pair.best.word }}</span>
+                        {% else %}
+                            <span class="pair" data-toggle="tooltip" title="{{ pair.best.word }}">{{ pair.both|upper }}</span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
     </div>
+
+    <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
 
 {% endblock %}
