@@ -10,3 +10,5 @@ services:
       - ./db.sqlite3:/app/db.sqlite3
     ports:
       - 8080:80
+    environment:
+      - DOMAIN_NAME=https://darkness.ukasz.com
