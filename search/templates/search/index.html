@@ -5,11 +5,40 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'search/styles.css' %}">
-    <script src="{% static 'letters/script.js' %}" defer></script>
+    <script src="{% static 'search/script.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
-
-    <h1>Content</h1>
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 p-0">
+                <div class="letters-column left-column">
+                    {% for letter in "ABCDEFGHIJK" %}
+                        <div class="letter-item">{{ letter }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-3 p-0">
+                <div class="letters-column middle-left-column">
+                    {% for letter in "LŁMNOPRSTUWZ" %}
+                        <div class="letter-item">{{ letter }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-3 p-0">
+                <div class="letters-column middle-right-column">
+                    {% for letter in "ABCDEFGHIJK" %}
+                        <div class="letter-item">{{ letter }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-3 p-0">
+                <div class="letters-column right-column">
+                    {% for letter in "LŁMNOPRSTUWZ" %}
+                        <div class="letter-item">{{ letter }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
