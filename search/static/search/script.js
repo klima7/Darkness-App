@@ -1,32 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
     const letterItems = document.querySelectorAll('.letter-item');
-    const pairModal = new bootstrap.Modal(document.getElementById('pairModal'));
+    const modalElement = document.getElementById('pairModal');
+    const pairModal = new bootstrap.Modal(modalElement);
     const closeButtons = document.querySelectorAll('[data-bs-dismiss="modal"]');
     let selectedLetters = {
         first: null,
         second: null
     };
+    let autoCloseTimer = null;
+    let progressInterval = null;
+
+    function cleanupTimers() {
+        if (autoCloseTimer) {
+            clearTimeout(autoCloseTimer);
+            autoCloseTimer = null;
+        }
+        if (progressInterval) {
+            clearInterval(progressInterval);
+            progressInterval = null;
+        }
+    }
 
     function updateSelectionState() {
         letterItems.forEach(item => {
-            const group = item.closest('.letters-column').dataset.group;
             item.classList.remove('selected', 'disabled');
             
-            if (group === 'first') {
-                if (selectedLetters.first) {
-                    if (item.dataset.letter === selectedLetters.first) {
-                        item.classList.add('selected');
-                    } else {
-                        item.classList.add('disabled');
-                    }
+            if (selectedLetters.first) {
+                if (item.dataset.letter === selectedLetters.first) {
+                    item.classList.add('selected');
                 }
-            } else if (group === 'second') {
-                if (selectedLetters.second) {
-                    if (item.dataset.letter === selectedLetters.second) {
-                        item.classList.add('selected');
-                    } else {
-                        item.classList.add('disabled');
-                    }
+            }
+            
+            if (selectedLetters.second) {
+                if (item.dataset.letter === selectedLetters.second) {
+                    item.classList.add('selected');
                 }
             }
         });
@@ -40,13 +47,31 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSelectionState();
     }
 
+    function closeModal() {
+        pairModal.hide();
+        cleanupTimers();
+    }
+
     function showPairInfo(data) {
         const pairContent = document.getElementById('pairContent');
         const modalTitle = document.getElementById('pairModalLabel');
+        const adminEditLink = document.getElementById('adminEditLink');
+        const modalProgress = document.getElementById('modalProgress');
         let content = '';
+
+        // Cleanup any existing timers
+        cleanupTimers();
 
         // Update modal title with the letter pair
         modalTitle.textContent = `Pair ${data.first.char.toUpperCase()}${data.second.char.toUpperCase()}`;
+
+        // Update admin edit link if pair exists
+        if (data.id) {
+            adminEditLink.href = `/admin/core/pair/${data.id}/change/`;
+            adminEditLink.style.display = 'inline-block';
+        } else {
+            adminEditLink.style.display = 'none';
+        }
 
         if (data.error) {
             content = `<div class="alert alert-danger">${data.error}</div>`;
@@ -78,35 +103,58 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         pairContent.innerHTML = content;
+        
+        // Reset progress bar
+        modalProgress.style.width = '100%';
+        
+        // Show modal
         pairModal.show();
+        
+        // Start progress bar animation
+        const duration = 5000; // 5 seconds
+        const steps = 100;
+        const stepTime = duration / steps;
+        let currentStep = 0;
+        
+        progressInterval = setInterval(() => {
+            currentStep++;
+            const progress = 100 - (currentStep / steps * 100);
+            modalProgress.style.width = `${progress}%`;
+            
+            if (currentStep >= steps) {
+                clearInterval(progressInterval);
+                progressInterval = null;
+            }
+        }, stepTime);
+
+        // Start auto-close timer
+        autoCloseTimer = setTimeout(() => {
+            closeModal();
+        }, duration);
     }
 
     // Add click handlers for close buttons
     closeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            pairModal.hide();
-        });
+        button.addEventListener('click', closeModal);
     });
 
     // Add keyboard handler for Escape key
     document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            pairModal.hide();
+        if (event.key === 'Escape' && modalElement.classList.contains('show')) {
+            closeModal();
         }
     });
 
+    // Add modal hidden event handler
+    modalElement.addEventListener('hidden.bs.modal', cleanupTimers);
+
     letterItems.forEach(item => {
         item.addEventListener('click', function() {
-            const group = this.closest('.letters-column').dataset.group;
             const letter = this.dataset.letter;
 
-            if (this.classList.contains('disabled')) {
-                return;
-            }
-
-            if (group === 'first') {
+            if (!selectedLetters.first) {
                 selectedLetters.first = letter;
-            } else {
+            } else if (!selectedLetters.second) {
                 selectedLetters.second = letter;
             }
 

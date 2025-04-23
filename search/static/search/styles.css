@@ -27,8 +27,9 @@
 
 .letter-item.selected {
     transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 10;
+    position: relative;
 }
 
 .letter-item.disabled {
@@ -64,4 +65,15 @@
 #pairContent {
     max-height: 60vh;
     overflow-y: auto;
+}
+
+#modalProgress {
+    height: 100%;
+}
+
+.progress {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    overflow: hidden;
+    margin: 0;
 }

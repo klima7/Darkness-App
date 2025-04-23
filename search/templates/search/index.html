@@ -11,7 +11,7 @@
 {% block content %}
     <div class="container-fluid bg-dark">
         <div class="row">
-            <div class="col-3 p-0">
+            <div class="col-6 p-0">
                 <div class="letters-column left-column" data-group="first">
                     {% for face in faces|slice:":3" %}
                         {% for letter in face.letters.all %}
@@ -20,26 +20,8 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-3 p-0">
+            <div class="col-6 p-0">
                 <div class="letters-column middle-left-column" data-group="first">
-                    {% for face in faces|slice:"3:" %}
-                        {% for letter in face.letters.all %}
-                            <div class="letter-item" data-letter="{{ letter.char|upper }}" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
-                        {% endfor %}
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-3 p-0">
-                <div class="letters-column middle-right-column" data-group="second">
-                    {% for face in faces|slice:":3" %}
-                        {% for letter in face.letters.all %}
-                            <div class="letter-item" data-letter="{{ letter.char|upper }}" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
-                        {% endfor %}
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-3 p-0">
-                <div class="letters-column right-column" data-group="second">
                     {% for face in faces|slice:"3:" %}
                         {% for letter in face.letters.all %}
                             <div class="letter-item" data-letter="{{ letter.char|upper }}" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
@@ -56,6 +38,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="pairModalLabel">Pair</h5>
+                    <a id="adminEditLink" class="btn btn-outline-light btn-sm ms-2" style="display: none;">
+                        <i class="bi bi-pencil-square"></i> Edit in Admin
+                    </a>
+                </div>
+                <div class="progress rounded-0" style="height: 3px;">
+                    <div id="modalProgress" class="progress-bar bg-light" role="progressbar" style="width: 100%"></div>
                 </div>
                 <div class="modal-body">
                     <div id="pairContent">

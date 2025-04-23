@@ -20,4 +20,4 @@ class PairSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Pair
-        fields = ['first', 'second', 'words', 'best_word'] 
+        fields = ['id', 'first', 'second', 'words', 'best_word'] 
