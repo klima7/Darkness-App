@@ -9,33 +9,41 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
+    <div class="container-fluid bg-dark">
         <div class="row">
             <div class="col-3 p-0">
                 <div class="letters-column left-column">
-                    {% for letter in "ABCDEFGHIJK" %}
-                        <div class="letter-item">{{ letter }}</div>
+                    {% for face in faces|slice:":3" %}
+                        {% for letter in face.letters.all %}
+                            <div class="letter-item" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
+                        {% endfor %}
                     {% endfor %}
                 </div>
             </div>
             <div class="col-3 p-0">
                 <div class="letters-column middle-left-column">
-                    {% for letter in "LŁMNOPRSTUWZ" %}
-                        <div class="letter-item">{{ letter }}</div>
+                    {% for face in faces|slice:"3:" %}
+                        {% for letter in face.letters.all %}
+                            <div class="letter-item" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
+                        {% endfor %}
                     {% endfor %}
                 </div>
             </div>
             <div class="col-3 p-0">
                 <div class="letters-column middle-right-column">
-                    {% for letter in "ABCDEFGHIJK" %}
-                        <div class="letter-item">{{ letter }}</div>
+                    {% for face in faces|slice:":3" %}
+                        {% for letter in face.letters.all %}
+                            <div class="letter-item" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
+                        {% endfor %}
                     {% endfor %}
                 </div>
             </div>
             <div class="col-3 p-0">
                 <div class="letters-column right-column">
-                    {% for letter in "LŁMNOPRSTUWZ" %}
-                        <div class="letter-item">{{ letter }}</div>
+                    {% for face in faces|slice:"3:" %}
+                        {% for letter in face.letters.all %}
+                            <div class="letter-item" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
+                        {% endfor %}
                     {% endfor %}
                 </div>
             </div>
