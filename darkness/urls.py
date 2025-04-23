@@ -9,4 +9,5 @@ urlpatterns = [
     path('tables/', include('tables.urls')),
     path('letters/', include('letters.urls')),
     path('stories/', include('stories.urls')),
+    path('search/', include('search.urls')),
 ]
