@@ -12,39 +12,58 @@
     <div class="container-fluid bg-dark">
         <div class="row">
             <div class="col-3 p-0">
-                <div class="letters-column left-column">
+                <div class="letters-column left-column" data-group="first">
                     {% for face in faces|slice:":3" %}
                         {% for letter in face.letters.all %}
-                            <div class="letter-item" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
+                            <div class="letter-item" data-letter="{{ letter.char|upper }}" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
                         {% endfor %}
                     {% endfor %}
                 </div>
             </div>
             <div class="col-3 p-0">
-                <div class="letters-column middle-left-column">
+                <div class="letters-column middle-left-column" data-group="first">
                     {% for face in faces|slice:"3:" %}
                         {% for letter in face.letters.all %}
-                            <div class="letter-item" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
+                            <div class="letter-item" data-letter="{{ letter.char|upper }}" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
                         {% endfor %}
                     {% endfor %}
                 </div>
             </div>
             <div class="col-3 p-0">
-                <div class="letters-column middle-right-column">
+                <div class="letters-column middle-right-column" data-group="second">
                     {% for face in faces|slice:":3" %}
                         {% for letter in face.letters.all %}
-                            <div class="letter-item" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
+                            <div class="letter-item" data-letter="{{ letter.char|upper }}" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
                         {% endfor %}
                     {% endfor %}
                 </div>
             </div>
             <div class="col-3 p-0">
-                <div class="letters-column right-column">
+                <div class="letters-column right-column" data-group="second">
                     {% for face in faces|slice:"3:" %}
                         {% for letter in face.letters.all %}
-                            <div class="letter-item" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
+                            <div class="letter-item" data-letter="{{ letter.char|upper }}" style="background-color: {{ face.color.rgb }}">{{ letter.char|upper }}</div>
                         {% endfor %}
                     {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="pairModal" tabindex="-1" aria-labelledby="pairModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pairModalLabel">Pair</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="pairContent">
+                        <!-- Content will be loaded here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

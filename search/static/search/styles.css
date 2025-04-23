@@ -22,6 +22,18 @@
     align-items: center;
     justify-content: center;
     min-height: 0;
+    cursor: pointer;
+}
+
+.letter-item.selected {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    z-index: 1;
+}
+
+.letter-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 @media (max-width: 576px) {
@@ -33,4 +45,23 @@
         margin: 0.25rem 0;
         padding: 0.1rem;
     }
+}
+
+/* Modal styles */
+.modal-content {
+    background-color: #343a40;
+    color: white;
+}
+
+.modal-header {
+    border-bottom: 1px solid #495057;
+}
+
+.modal-footer {
+    border-top: 1px solid #495057;
+}
+
+#pairContent {
+    max-height: 60vh;
+    overflow-y: auto;
 }
