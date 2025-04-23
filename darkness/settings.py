@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'tables',
     'letters',
     'stories',
+    'search',
 ]
 
 MIDDLEWARE = [
