@@ -3,12 +3,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalElement = document.getElementById('pairModal');
     const pairModal = new bootstrap.Modal(modalElement);
     const closeButtons = document.querySelectorAll('[data-bs-dismiss="modal"]');
+    const waitButton = document.getElementById('waitButton');
     let selectedLetters = {
         first: null,
         second: null
     };
     let autoCloseTimer = null;
     let progressInterval = null;
+    let waitMode = false;
 
     function cleanupTimers() {
         if (autoCloseTimer) {
@@ -57,10 +59,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalTitle = document.getElementById('pairModalLabel');
         const adminEditLink = document.getElementById('adminEditLink');
         const modalProgress = document.getElementById('modalProgress');
+        const progressContainer = modalProgress.closest('.progress');
         let content = '';
 
         // Cleanup any existing timers
         cleanupTimers();
+        
+        // Reset wait mode
+        waitMode = false;
+        waitButton.style.display = 'inline-block';
+        progressContainer.style.display = 'block';
 
         // Update modal title with the letter pair
         modalTitle.textContent = `Pair ${data.first.char.toUpperCase()}${data.second.char.toUpperCase()}`;
@@ -110,28 +118,45 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show modal
         pairModal.show();
         
-        // Start progress bar animation
-        const duration = 5000; // 5 seconds
-        const steps = 100;
-        const stepTime = duration / steps;
-        let currentStep = 0;
-        
-        progressInterval = setInterval(() => {
-            currentStep++;
-            const progress = 100 - (currentStep / steps * 100);
-            modalProgress.style.width = `${progress}%`;
+        // Only start progress bar and auto-close timer if not in wait mode
+        if (!waitMode) {
+            // Start progress bar animation
+            const duration = 5000; // 5 seconds
+            const steps = 100;
+            const stepTime = duration / steps;
+            let currentStep = 0;
             
-            if (currentStep >= steps) {
-                clearInterval(progressInterval);
-                progressInterval = null;
-            }
-        }, stepTime);
-
-        // Start auto-close timer
-        autoCloseTimer = setTimeout(() => {
-            closeModal();
-        }, duration);
+            progressInterval = setInterval(() => {
+                currentStep++;
+                const progress = 100 - (currentStep / steps * 100);
+                modalProgress.style.width = `${progress}%`;
+                
+                if (currentStep >= steps) {
+                    clearInterval(progressInterval);
+                    progressInterval = null;
+                }
+            }, stepTime);
+    
+            // Start auto-close timer
+            autoCloseTimer = setTimeout(() => {
+                closeModal();
+            }, duration);
+        }
     }
+
+    // Add wait button handler
+    waitButton.addEventListener('click', function() {
+        // Hide the wait button
+        this.style.display = 'none';
+        
+        // Enable wait mode
+        waitMode = true;
+        cleanupTimers();
+        
+        // Hide progress bar
+        const progressContainer = document.querySelector('.progress');
+        progressContainer.style.display = 'none';
+    });
 
     // Add click handlers for close buttons
     closeButtons.forEach(button => {
