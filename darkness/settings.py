@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'letters',
     'stories',
     'search',
+    'faces',
 ]
 
 MIDDLEWARE = [

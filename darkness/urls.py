@@ -10,4 +10,5 @@ urlpatterns = [
     path('letters/', include('letters.urls')),
     path('stories/', include('stories.urls')),
     path('search/', include('search.urls')),
+    path('faces/', include('faces.urls')),
 ]
