@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -6,34 +7,38 @@ from core.models import Letter, Face, Pair
 from .serializers import PairSerializer
 
 
-def index(request):
-    faces = Face.objects.all()
-    return render(request, 'search/index.html', context={'faces': faces})
-
-class PairLookupView(APIView):
-    def get(self, request):
-        letter1 = request.GET.get('letter1')
-        letter2 = request.GET.get('letter2')
+def index(request, character=None):
+    if character is None:
+        return redirect('faces:index_with_character', character='a')
+    
+    letters = Letter.objects.values_list('char', flat=True)
+    
+    pairs = Pair.objects.filter(
+        first__char__iexact=character
+    ).select_related(
+        'first__face',
+        'first__face__color',
+        'second__face',
+        'second__face__color',
+        'best'
+    )
+    
+    # Split pairs into two lists based on second letter's face position
+    ufd_pairs = []  # Up, Front, Down
+    lrb_pairs = []  # Left, Right, Back
+    
+    for pair in pairs:
+        position = pair.second.face.position
+        if position in ['U', 'F', 'D']:
+            ufd_pairs.append(pair)
+        elif position in ['L', 'R', 'B']:
+            lrb_pairs.append(pair)
+    
+    context = {
+        'ufd_pairs': ufd_pairs,
+        'lrb_pairs': lrb_pairs,
+        'letters': letters,
+        'current_letter': character,
+    }
         
-        if not letter1 or not letter2:
-            return Response(
-                {'error': 'Both letter1 and letter2 parameters are required'}, 
-                status=status.HTTP_400_BAD_REQUEST
-            )
-            
-        try:
-            first_letter = Letter.objects.get(char=letter1)
-            second_letter = Letter.objects.get(char=letter2)
-            pair = Pair.objects.get(first=first_letter, second=second_letter)
-            serializer = PairSerializer(pair)
-            return Response(serializer.data)
-        except Letter.DoesNotExist:
-            return Response(
-                {'error': 'One or both letters not found'}, 
-                status=status.HTTP_404_NOT_FOUND
-            )
-        except Pair.DoesNotExist:
-            return Response(
-                {'error': 'Pair not found for given letters'}, 
-                status=status.HTTP_404_NOT_FOUND
-            )
+    return render(request, 'faces/index.html', context=context)

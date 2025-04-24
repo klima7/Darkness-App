@@ -5,5 +5,5 @@ app_name = 'faces'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('api/pair/', views.PairLookupView.as_view(), name='pair_lookup'),
+    path('<str:character>/', views.index, name='index_with_character'),
 ]

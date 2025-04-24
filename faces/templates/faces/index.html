@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Search{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'faces/styles.css' %}">
+    <script src="{% static 'faces/script.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid bg-dark d-flex flex-column">
+        <div class="row mb-3 mt-3">
+            <div class="col-12">
+                <input type="hidden" id="url-pattern" value="{% url 'faces:index_with_character' 'PLACEHOLDER' %}">
+                <select id="letter-select" class="fancy-select w-100">
+                    {% for letter in letters %}
+                        <option value="{{ letter }}" {% if letter == current_letter %}selected{% endif %}>{{ letter|upper }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="row flex-grow-1">
+            <div class="col-6 d-flex flex-column">
+                <div class="letter-pairs-container">
+                    {% for pair in ufd_pairs %}
+                        <div class="letter-pair-item" data-pair-id="{{ pair.id }}" title="Double-click to edit this pair in admin" style="background-color: {{ pair.second.face.color.rgb }}">
+                            <div class="pair-content">
+                                {{ pair.first.char|upper }}{{ pair.second.char|upper }} - {% if pair.best %}{{ pair.best.word }}{% else %}—{% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-6 d-flex flex-column">
+                <div class="letter-pairs-container">
+                    {% for pair in lrb_pairs %}
+                        <div class="letter-pair-item" data-pair-id="{{ pair.id }}" title="Double-click to edit this pair in admin" style="background-color: {{ pair.second.face.color.rgb }}">
+                            <div class="pair-content">
+                                {{ pair.first.char|upper }}{{ pair.second.char|upper }} - {% if pair.best %}{{ pair.best.word }}{% else %}—{% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div style="height: 56px;"></div>
+    </div>
+{% endblock %}
