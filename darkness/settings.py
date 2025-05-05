@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'stories',
     'search',
     'faces',
+    'cards',
 ]
 
 MIDDLEWARE = [

@@ -11,4 +11,5 @@ urlpatterns = [
     path('stories/', include('stories.urls')),
     path('search/', include('search.urls')),
     path('faces/', include('faces.urls')),
+    path('cards/', include('cards.urls')),
 ]

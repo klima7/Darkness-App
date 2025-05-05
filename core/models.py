@@ -12,6 +12,10 @@ class Color(models.Model):
     @property
     def rgb(self):
         return f'rgb({self.red}, {self.green}, {self.blue})'
+    
+    @property
+    def normalized_tuple(self):
+        return (self.red / 255, self.green / 255, self.blue / 255)
 
     def __str__(self):
         return self.name
