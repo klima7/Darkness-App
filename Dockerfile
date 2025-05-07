@@ -17,6 +17,6 @@ RUN addgroup --gid $GROUP_ID user && \
     echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/user && \
     chmod 440 /etc/sudoers.d/user
 
-EXPOSE 80
+EXPOSE 8090
 
-CMD python manage.py runserver 0.0.0.0:8080
+CMD python manage.py runserver 0.0.0.0:8090
