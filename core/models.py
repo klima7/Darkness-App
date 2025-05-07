@@ -67,6 +67,7 @@ class Pair(models.Model):
     first = models.ForeignKey(Letter, related_name='pairs_first', on_delete=models.CASCADE, null=False, blank=False)
     second = models.ForeignKey(Letter, related_name='pairs_second', on_delete=models.CASCADE, null=False, blank=False)
     best = models.ForeignKey(Word, related_name='abc', on_delete=models.SET_NULL, null=True, blank=True)
+    difficult = models.BooleanField(default=False, help_text='Difficult to remember')
 
     @property
     def both(self):

@@ -95,6 +95,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${data.best_word.description}
                         </div>
                     ` : ''}
+                    ${data.difficult ? `
+                        <div class="mt-2">
+                            <span class="badge bg-warning text-dark">
+                                <i class="bi bi-exclamation-triangle-fill"></i> Difficult to remember
+                            </span>
+                        </div>
+                    ` : ''}
                 </div>
                 <div class="mt-4">
                     <h6>All Words:</h6>

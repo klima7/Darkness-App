@@ -1,3 +1,4 @@
 Dockerfile
 conda/**
 db.sqlite3
+data/**

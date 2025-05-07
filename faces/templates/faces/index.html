@@ -26,7 +26,7 @@
                     {% for pair in ufd_pairs %}
                         <div class="letter-pair-item" data-pair-id="{{ pair.id }}" title="Double-click to edit this pair in admin" style="background-color: {{ pair.second.face.color.rgb }}">
                             <div class="pair-content">
-                                {{ pair.first.char|upper }}{{ pair.second.char|upper }} - {% if pair.best %}{{ pair.best.word }}{% else %}—{% endif %}
+                                {{ pair.first.char|upper }}{{ pair.second.char|upper }} - {% if pair.best %}{{ pair.best.word }}{% else %}—{% endif %}{% if pair.difficult %} ⚠️{% endif %}
                             </div>
                         </div>
                     {% endfor %}
@@ -37,7 +37,7 @@
                     {% for pair in lrb_pairs %}
                         <div class="letter-pair-item" data-pair-id="{{ pair.id }}" title="Double-click to edit this pair in admin" style="background-color: {{ pair.second.face.color.rgb }}">
                             <div class="pair-content">
-                                {{ pair.first.char|upper }}{{ pair.second.char|upper }} - {% if pair.best %}{{ pair.best.word }}{% else %}—{% endif %}
+                                {{ pair.first.char|upper }}{{ pair.second.char|upper }} - {% if pair.best %}{{ pair.best.word }}{% else %}—{% endif %}{% if pair.difficult %} ⚠️{% endif %}
                             </div>
                         </div>
                     {% endfor %}

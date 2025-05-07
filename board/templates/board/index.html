@@ -30,11 +30,11 @@
                 <th scope="row" style="background-color: {{ first.face.color.rgb }}">{{ first.char.upper }}</th>
                 {% for second, pair in first_data.items %}
                     {% if pair.best == None %}
-                        <td ondblclick="openPair({{ pair.id }}, true);" data-toggle="tooltip" title="---" style="background: lightpink">{{ pair.both.upper }}</td>
+                        <td ondblclick="openPair({{ pair.id }}, true);" data-toggle="tooltip" title="---" style="background: {% if pair.difficult %}yellow{% else %}lightpink{% endif %}">{{ pair.both.upper }}</td>
                     {% elif pair.best.description == None %}
-                        <td ondblclick="openPair({{ pair.id }}, true);" data-toggle="tooltip" title="{{ pair.best }}">{{ pair.both.upper }}</td>
+                        <td ondblclick="openPair({{ pair.id }}, true);" data-toggle="tooltip" title="{{ pair.best }}" style="background: {% if pair.difficult %}yellow{% endif %}">{{ pair.both.upper }}</td>
                     {% else %}
-                        <td ondblclick="openPair({{ pair.id }}, true);" data-toggle="tooltip" title="{{ pair.best }} ({{ pair.best.description }})">{{ pair.both.upper }}</td>
+                        <td ondblclick="openPair({{ pair.id }}, true);" data-toggle="tooltip" title="{{ pair.best }} ({{ pair.best.description }})" style="background: {% if pair.difficult %}yellow{% endif %}">{{ pair.both.upper }}</td>
                     {% endif %}
                 {% endfor %}
             </tr>

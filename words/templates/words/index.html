@@ -48,6 +48,15 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Mode</label>
+                            <select id="select-difficulty" class="form-control">
+                                <option value="all" {% if difficulty == 'all' %}selected{% endif %}>All</option>
+                                <option value="difficult" {% if difficulty == 'difficult' %}selected{% endif %}>Difficult</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-row">
                     <button class="btn btn-dark w-100">Generate</button>

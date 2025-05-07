@@ -24,12 +24,13 @@ class WordInlineAdmin(admin.TabularInline):
 
 class PairAdmin(admin.ModelAdmin):
     ordering = ('first', 'second')
-    list_display = ('__str__', 'best', 'description', 'other')
+    list_display = ('__str__', 'best', 'description', 'difficult', 'other')
     readonly_fields = ('first', 'second')
-    list_filter = ('first', 'second', ('best', admin.EmptyFieldListFilter))
+    list_filter = ('difficult', 'first', 'second', ('best', admin.EmptyFieldListFilter))
     search_fields = ('',)
     inlines = (WordInlineAdmin,)
     form = PairAdminForm
+    actions = ['set_difficult_to_false', 'set_difficult_to_true']
 
     def other(self, pair):
         return ', '.join([word.word for word in pair.words.all() if word != pair.best])
@@ -45,6 +46,14 @@ class PairAdmin(admin.ModelAdmin):
         elif len(search_term) == 2:
             return queryset.filter(first__char=search_term[0], second__char=search_term[1]), False
         return Pair.objects.none(), False
+    
+    def set_difficult_to_false(self, request, queryset):
+        queryset.update(difficult=False)
+    set_difficult_to_false.short_description = 'Set difficult to false'
+    
+    def set_difficult_to_true(self, request, queryset):
+        queryset.update(difficult=True)
+    set_difficult_to_true.short_description = 'Set difficult to true'
 
 
 class WordAdmin(admin.ModelAdmin):
