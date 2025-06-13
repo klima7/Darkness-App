@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'search',
     'faces',
     'cards',
+    'api',
 ]
 
 MIDDLEWARE = [

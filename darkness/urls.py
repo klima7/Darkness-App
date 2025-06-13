@@ -12,4 +12,5 @@ urlpatterns = [
     path('search/', include('search.urls')),
     path('faces/', include('faces.urls')),
     path('cards/', include('cards.urls')),
+    path('api/', include('api.urls')),
 ]
